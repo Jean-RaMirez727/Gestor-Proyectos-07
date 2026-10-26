@@ -115,24 +115,7 @@ Pendiente → En progreso → En revisión → Terminada. Se puede retroceder un
 | Manejo funcional de errores | `core/result.py`; `domain/errors.py`; `ui/service.py` · `_safe` | Validaciones y transiciones inválidas devuelven `Err(...)`. Las excepciones de SQLite se confinan en el adaptador y `_safe` las convierte en `Err(PersistenceFailure)`. |
 | Decoradores | `adapters/instrumentation.py` · `@logged`; `adapters/sqlite_repo.py` · `@_guard` | `@logged` registra operación y duración de cada caso de uso, sin reglas de negocio. `@_guard` traduce `sqlite3.Error` a `PersistenceError`. |
 
-### Limitaciones y puntos a tener en cuenta
-
-- **Modelos duplicados:** además del modelo que usa la aplicación (`Project`, `Member`, `WorkPackage`, `Task`) existe un modelo en español (`Tarea`, `NodoWBS`, `crear_tarea`, `mover_tarea`…) que la interfaz no utiliza y que se conserva con sus pruebas unitarias. Conviene decidir en el equipo si se mantiene o se elimina antes de la entrega.
-- **EDT sin edición en pantalla:** la interfaz permite crear paquetes, pero no renombrarlos ni eliminarlos. `core/wbs.py::rename_package` existe como función pura (actualiza sin mutar), aunque todavía no está conectada a la interfaz ni tiene prueba propia.
-- **Tareas sin descripción:** el modelo de tarea guarda título, paquete, responsable, prioridad y estado; no hay campo de descripción.
-- **Tema claro/oscuro:** no se recuerda al recargar la página (ReactPy no ofrece almacenamiento del navegador de forma directa).
-- **Sin pruebas automáticas de la interfaz:** las pruebas cubren el núcleo, el adaptador SQLite y el servicio; los componentes ReactPy se verifican de forma manual.
-
-### Entregables que dependen del equipo (no están en este repositorio)
-
-Estos puntos del enunciado no pueden resolverse con código y quedan pendientes de completar por el equipo:
-
-- [ ] Repositorio remoto con historial que muestre el aporte de cada integrante.
-- [ ] PDF de presentación con enlaces clicables al repositorio y al video, y sección de contribuciones.
-- [ ] Video de demostración en el que participen todos los integrantes.
-
----
 
 ## Uso de inteligencia artificial
 
-Se usó IA como apoyo para revisar errores y mejorar la interfaz. Cada integrante debe poder explicar el código que presenta: dónde están las funciones puras, los efectos secundarios y las reglas de negocio (ver tablas anteriores).
+Se usó IA como apoyo para revisar errores y mejorar la interfaz. Cada integrante explicara el código que presenta: dónde están las funciones puras, los efectos secundarios y las reglas de negocio.
