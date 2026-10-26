@@ -17,6 +17,9 @@ h1,h2,h3{margin:.2rem 0 .6rem} input,select,button{margin:0 .4rem .4rem 0;paddin
 .col{background:#eef0f4;border-radius:6px;padding:.6rem;min-height:6rem}
 .card{background:#fff;border-radius:6px;padding:.5rem;margin-bottom:.5rem;box-shadow:0 1px 2px #0003}
 .ok{color:#17692f}.error{color:#a31515}.muted{color:#666;font-size:.85rem}
+button{cursor:pointer}
+.card:hover{box-shadow:0 2px 6px #0004}
+input:focus,select:focus{outline:2px solid #4c8bf5}
 """
 
 
