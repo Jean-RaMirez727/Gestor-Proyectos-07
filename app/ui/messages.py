@@ -1,10 +1,18 @@
 """Conversión de errores del núcleo en mensajes comprensibles (shell)."""
-from app.domain.errors import AppError, InvalidTransition, NotFound, PersistenceFailure, ValidationError
+from app.domain.errors import (
+    AppError,
+    InvalidTransition,
+    NotFound,
+    NotFoundError,
+    PersistenceFailure,
+    TransitionError,
+    ValidationError,
+)
 
 
 def to_message(error: AppError) -> str:
     match error:
-        case ValidationError(_, message):
+        case ValidationError(message) | TransitionError(message) | NotFoundError(message):
             return message
         case InvalidTransition(origin, target):
             return f"No se puede mover una tarea de «{origin.value}» a «{target.value}». Usa los botones de la tarjeta para ver los movimientos permitidos."

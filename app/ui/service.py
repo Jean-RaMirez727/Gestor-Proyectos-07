@@ -8,7 +8,7 @@ from app.adapters.instrumentation import logged
 from app.core import tasks as T
 from app.core import wbs as W
 from app.core.result import Err, Ok, Result, bind
-from app.domain.errors import NotFound, PersistenceFailure
+from app.domain.errors import NotFound, PersistenceFailure, ValidationError
 from app.domain.models import Priority, Status
 from app.ports.repository import PersistenceError, Repository
 
@@ -71,7 +71,7 @@ class AppService:
                  priority: Priority, assignee_id: int | None) -> Result:
         def op() -> Result:
             if package_id is None:
-                return Err(NotFound("paquete", None))
+                return Err(ValidationError("Selecciona un paquete de la EDT para la tarea."))
             return bind(
                 T.create_task(project_id, package_id, title, priority, assignee_id,
                               self._repo.list_packages(project_id), self._repo.list_members(project_id)),
