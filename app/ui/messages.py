@@ -7,7 +7,7 @@ def to_message(error: AppError) -> str:
         case ValidationError(_, message):
             return message
         case InvalidTransition(origin, target):
-            return f"No se puede mover una tarea de «{origin.value}» a «{target.value}»."
+            return f"No se puede mover una tarea de «{origin.value}» a «{target.value}». Usa los botones de la tarjeta para ver los movimientos permitidos."
         case NotFound(entity, _):
             return f"No se encontró el {entity} indicado."
         case PersistenceFailure(detail):
