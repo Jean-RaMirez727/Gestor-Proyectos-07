@@ -1,6 +1,6 @@
 # Gestor de proyectos con EDT y Kanban
 
-Aplicación web local para planificar un proyecto con una **EDT/WBS** (¿qué trabajo hay que hacer?) y dar seguimiento a sus tareas en un tablero **Kanban** (¿en qué estado está ese trabajo?).
+Aplicación web local para planificar un proyecto con una **EDT/WBS**  y dar seguimiento a sus tareas en un tablero **Kanban**.
 
 Tecnologías: Python · ReactPy (interfaz) · FastAPI (sólo sirve e integra ReactPy, **no hay API REST propia**) · SQLite (persistencia local) · CSS propio, sin frameworks de interfaz.
 
